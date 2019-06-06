@@ -9,18 +9,17 @@
 
 class background {
     sf::RenderWindow &ark;
-    float Xark;
-    float Yark;
-    sf::RectangleShape rect;
 public:
+    sf::RectangleShape death;
+    sf::RectangleShape wall[4];
     background();
     background(sf::RenderWindow & ark);
     void draw(sf::RenderWindow & ark);
-    float getArkposX();
-    float getArkposY();
-    float getArksizeX();
-    float getArksizeY();
-    float getCenterArkX();
+    sf::Vector2f getPosForPlatform();
+    sf::Vector2f getPosForBall();
+    sf::Vector2f getPosForLevelDraw();
+    sf::Vector2f getLevelSize();
+
 };
 
 

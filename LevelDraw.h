@@ -7,23 +7,36 @@
 
 #include <Graphics/RenderWindow.hpp>
 #include "background.h"
-#include "ball.h"
+#include "vector"
+
 struct obj {
-    int width;
-    int height;
-    int hits;
+    float width;
+    float height;
+    //sf::RectangleShape blok;
+    sf::RectangleShape blok[12][20];
+    //std::vector<std::vector<sf::RectangleShape> > blok ;
+
+    int hitpoints;
+};
+struct LS {
+    float width;
+    float height;
+    int rows;
+    int cols;
 };
 
 class LevelDraw {
 
 private:
     background &tlo;
-    ball &kula;
-    obj block;
-    int pole[20][20][5];
+    LS levelsize;
 public:
-    LevelDraw(background &tlo, ball &kula);
-    void drawblock(sf::RenderWindow &ark, background &tlo, ball &kula);
+    std::vector<std::vector<int> > pole;
+    obj block;
+    LevelDraw(background &tlo);
+    void drawblock(sf::RenderWindow &ark);
+    int getLevelSizeCols();
+    int getLevelSizeRows();
 };
 
 

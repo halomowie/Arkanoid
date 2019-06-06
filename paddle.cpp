@@ -6,33 +6,50 @@
 #include "background.h"
 #include <iostream>
 paddle::paddle(background &temp2): tlo(temp2) {
-    platform.speedPercent = 15;
-    platform.heightPercent = 12;
-    platform.widthPercent = 120;
-    platform.tickrate = 20;
+    platform.speedPercent = 30;
+    platform.heightPercent = 4;
+    platform.widthPercent = 240;
+    platform.tickrate = 40;
     platform.blok.setSize(sf::Vector2f(platform.widthPercent,platform.heightPercent));
     platform.blok.setOrigin(sf::Vector2f(platform.blok.getSize().x/2,0));
-    platform.blok.setPosition(sf::Vector2f(tlo.getCenterArkX(), tlo.getArkposY()+tlo.getArksizeY()- platform.heightPercent*6));
+    platform.blok.setPosition(tlo.getPosForPlatform());
 }
 
 void paddle::movepaddle(sf::Event &event, sf::RenderWindow &ark) {
     if (platform.tick.getElapsedTime().asMilliseconds() >= platform.tickrate) {
+        platform.tick.restart();
         if (event.type == sf::Event::KeyPressed) {
-            platform.tick.restart();
-            if (event.key.code == sf::Keyboard::Right) {
-                if (platform.blok.getPosition().x + platform.blok.getSize().x / 2 <
-                    tlo.getArkposX() + tlo.getArksizeX())
-                    platform.blok.move(platform.speedPercent, 0);
-                ark.draw((platform.blok));
-            } else if (event.key.code == sf::Keyboard::Left) {
-                if (platform.blok.getPosition().x - platform.blok.getSize().x / 2 > tlo.getArkposX())
-                    platform.blok.move(-platform.speedPercent, 0);
-                ark.draw(platform.blok);
-            }
+            if (event.key.code == sf::Keyboard::Left) {
+                if(platform.blok.getGlobalBounds().intersects(tlo.wall[3].getGlobalBounds())){
 
+                }
+                else {
+                    if(tlo.wall[0].getPosition().x>platform.blok.getPosition().x-platform.blok.getSize().x/2-platform.speedPercent){
+
+                    }
+                    else {
+                        platform.blok.move(-platform.speedPercent, 0);
+                    }
+                }
+            }
+            else if(event.key.code == sf::Keyboard::Right){
+                if(platform.blok.getGlobalBounds().intersects(tlo.wall[1].getGlobalBounds())){
+
+                }
+                else {
+                    if(tlo.wall[0].getPosition().x+tlo.wall[0].getSize().x<platform.blok.getPosition().x+platform.blok.getSize().x/2+platform.speedPercent){
+
+                    }
+                    else {
+                        platform.blok.move(platform.speedPercent, 0);
+                    }
+                }
+            }
         }
     }
 }
+
+
 
 
 

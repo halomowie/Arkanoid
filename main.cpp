@@ -3,16 +3,18 @@
 #include "background.h"
 #include "paddle.h"
 #include "ball.h"
+#include "LevelDraw.h"
 #include <iostream>
 int main()
 {
     // create the window
     sf::RenderWindow ark(sf::VideoMode(1024, 700, 32), "Arkanoid");
-    ark.setVerticalSyncEnabled(true);
-    //ark.setFramerateLimit(60);
+    //ark.setVerticalSyncEnabled(true);
+    ark.setFramerateLimit(60);
     background tlo(ark);
     paddle palka(tlo);
-    ball kula(tlo,palka,-1,1);
+    LevelDraw lvl(tlo);
+    ball kula(ark,tlo,palka,lvl);
     // run the program as long as the window is open
     while (ark.isOpen())
     {
@@ -31,9 +33,10 @@ int main()
         // draw everything here...
 
         tlo.draw(ark);
-        kula.move(ark);
+        kula.move(ark,lvl);
         palka.drawpaddle(ark);
         palka.movepaddle(event,ark);
+        lvl.drawblock(ark);
         // end the current frame
         ark.display();
         //std::cout << ark.getSize().x << " " << ark.getSize().y << std::endl;
