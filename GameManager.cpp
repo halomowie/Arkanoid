@@ -66,7 +66,7 @@ void GameManager::DrawGamemanager(sf::RenderWindow &ark) {
         text.GameEnd.setString("LOSE");
     }
     else if(lvl.getTotalBlockHitValue()==0){
-        text.GameEnd.setString("WIN")
+        text.GameEnd.setString("WIN");
     }
 }
 
