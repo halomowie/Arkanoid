@@ -8,6 +8,7 @@
 #include "background.h"
 #include "paddle.h"
 #include "LevelDraw.h"
+
 struct speed {
     float x;
     float y;
@@ -28,12 +29,15 @@ class ball {
     background &tlo;
     paddle &palka;
     LevelDraw &lvl;
+    sf::Clock DebounceClock;
+    int Debounce;
 public:
     kula pin;
     ball(sf::RenderWindow &ark, background &tlo, paddle &palka, LevelDraw &lvl);
     void move(sf::RenderWindow &ark, LevelDraw &lvl);
-    bool isCollision(sf::CircleShape x, sf::RectangleShape y);
     void BlockHit();
+    void CollisionWithPaddle();
+    int getBallHealh();
 };
 
 

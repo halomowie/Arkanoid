@@ -3,7 +3,7 @@ project(Arkanoid)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Arkanoid main.cpp background.cpp background.h paddle.cpp paddle.h ball.cpp ball.h LevelDraw.cpp LevelDraw.h)
+add_executable(Arkanoid main.cpp background.cpp background.h paddle.cpp paddle.h ball.cpp ball.h LevelDraw.cpp LevelDraw.h GameManager.cpp GameManager.h)
 
 set(SFML_PATH "C:/cpp/SFML-2.5.1" ${CMAKE_MODULE_PATH})
 set(SFML_DIR ${SFML_PATH}/lib/cmake/SFML)

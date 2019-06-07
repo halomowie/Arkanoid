@@ -5,16 +5,19 @@
 #include "ball.h"
 #include "LevelDraw.h"
 #include <iostream>
+#include "GameManager.h"
 int main()
 {
     // create the window
-    sf::RenderWindow ark(sf::VideoMode(1024, 700, 32), "Arkanoid");
+    sf::RenderWindow ark(sf::VideoMode(1100, 700, 32), "Arkanoid");
     //ark.setVerticalSyncEnabled(true);
     ark.setFramerateLimit(60);
     background tlo(ark);
     paddle palka(tlo);
     LevelDraw lvl(tlo);
     ball kula(ark,tlo,palka,lvl);
+    GameManager mgr(ark,kula,palka,lvl,tlo);
+
     // run the program as long as the window is open
     while (ark.isOpen())
     {
@@ -23,8 +26,12 @@ int main()
         while (ark.pollEvent(event))
         {
             // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed) {
                 ark.close();
+            }
+            else if(event.key.code == sf::Keyboard::Escape){
+                ark.close();
+            }
         }
 
         // clear the window with black color
@@ -33,10 +40,14 @@ int main()
         // draw everything here...
 
         tlo.draw(ark);
-        kula.move(ark,lvl);
-        palka.drawpaddle(ark);
-        palka.movepaddle(event,ark);
-        lvl.drawblock(ark);
+        mgr.DrawGamemanager(ark);
+        if(kula.getBallHealh()>0) {
+            kula.move(ark, lvl);
+            palka.drawpaddle(ark);
+            palka.movepaddle(event, ark);
+            lvl.drawblock(ark);
+        }
+
         // end the current frame
         ark.display();
         //std::cout << ark.getSize().x << " " << ark.getSize().y << std::endl;

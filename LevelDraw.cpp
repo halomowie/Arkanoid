@@ -13,16 +13,16 @@ LevelDraw::LevelDraw(background &temp1): tlo(temp1) {
     block.height=levelsize.height/levelsize.rows;
     //block.blok[levelsize.cols][levelsize.rows];
     //pole[10][12];
-    pole= {{5,5,0,0,0,0,0,0,0,0,5,5}, //1
-          {5,5,0,0,0,0,0,0,0,0,5,5}, //2
-          {5,5,0,0,0,0,0,0,0,0,5,5}, //3
-          {5,5,0,0,0,0,0,0,0,0,5,5}, //4
-          {5,5,0,0,0,0,0,0,0,0,5,5}, //5
-          {5,5,0,0,0,0,0,0,0,0,5,5}, //6
-          {5,5,0,0,0,0,0,0,0,0,5,5}, //7
-          {5,5,0,0,0,0,0,0,0,0,5,5}, //8
-          {5,5,0,0,0,0,0,0,0,0,0,0}, //9
-          {5,5,0,0,0,0,0,0,0,0,0,0},};//10;
+    pole= {{1,1,1,1,1,1,1,1,2,3,4,5}, //1
+          {1,1,1,1,1,1,1,1,2,3,4,5}, //2
+          {1,1,1,1,1,1,1,1,2,3,4,5}, //3
+          {1,1,1,1,1,1,1,1,2,3,4,5}, //4
+          {1,1,1,1,1,1,1,1,2,3,4,5}, //5
+          {1,1,1,1,1,1,1,1,2,3,4,5}, //6
+          {1,1,1,1,1,1,1,1,2,3,4,5}, //7
+          {1,1,1,1,1,1,1,1,2,3,4,5}, //8
+          {1,1,1,1,1,1,1,1,2,3,4,5}, //9
+          {1,1,1,1,1,1,1,1,2,3,4,5},};//10;
 }
 
 void LevelDraw::drawblock(sf::RenderWindow &ark) {
@@ -68,3 +68,16 @@ int LevelDraw::getLevelSizeRows() {
     return levelsize.rows;
 }
 
+int LevelDraw::getBlockHitValue(int x, int y) {
+    return pole[x][y];
+}
+
+int LevelDraw::getTotalBlockHitValue() {
+    int val;
+    for (int x = 0; x < getLevelSizeCols(); ++x) {
+        for (int y = 0; y < getLevelSizeRows(); ++y) {
+            val+=pole[x][y];
+        }
+    }
+    return val;
+}

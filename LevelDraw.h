@@ -7,16 +7,12 @@
 
 #include <Graphics/RenderWindow.hpp>
 #include "background.h"
-#include "vector"
+#include <vector>
 
 struct obj {
     float width;
     float height;
-    //sf::RectangleShape blok;
     sf::RectangleShape blok[12][20];
-    //std::vector<std::vector<sf::RectangleShape> > blok ;
-
-    int hitpoints;
 };
 struct LS {
     float width;
@@ -37,6 +33,8 @@ public:
     void drawblock(sf::RenderWindow &ark);
     int getLevelSizeCols();
     int getLevelSizeRows();
+    int getBlockHitValue(int x, int y);
+    int getTotalBlockHitValue();
 };
 
 

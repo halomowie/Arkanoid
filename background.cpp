@@ -6,8 +6,7 @@
 #include <iostream>
 
 
-
-background::background(sf::RenderWindow &temp): ark(temp) {
+background::background(sf::RenderWindow &temp): ark(temp)  {
 
     for (int i = 0; i < 4; ++i) {
         wall[i].setSize(sf::Vector2f(600,10));
@@ -21,9 +20,9 @@ background::background(sf::RenderWindow &temp): ark(temp) {
     wall[2].setPosition(sf::Vector2f(wall[0].getPosition().x,
             wall[0].getPosition().y+wall[0].getSize().y+wall[0].getSize().x));
     wall[3].setPosition(wall[0].getPosition().x,wall[0].getPosition().y + wall[0].getSize().y);
-    death.setPosition(wall[0].getPosition().x,wall [0].getPosition().y+ wall[0].getSize().x-wall[0].getSize().y*2);
-    death.setFillColor(sf::Color(114, 2, 2));
-    death.setSize(sf::Vector2f(wall[0].getSize().x,wall[0].getSize().y*3));
+    death.setPosition(wall[0].getPosition().x,wall [0].getPosition().y+ wall[0].getSize().x-wall[0].getSize().y*1);
+    death.setFillColor(sf::Color(0, 0, 0));
+    death.setSize(sf::Vector2f(wall[0].getSize().x,wall[0].getSize().y*2));
 
 
 }
@@ -47,9 +46,21 @@ sf::Vector2f background::getLevelSize() {
     return sf::Vector2f(wall[0].getSize().x*0.8,wall[0].getSize().x*0.4);
 }
 
+sf::Vector2f background::getPosforGameState() {
+    return sf::Vector2f(680,100);
+}
+
 void background::draw(sf::RenderWindow &ark) {
     for (int i = 0; i < 4; ++i) {
         ark.draw(wall[i]);
     }
     ark.draw(death);
+}
+
+sf::Vector2f background::getBoxPostition() {
+    sf::Vector2f(wall[0].getPosition().x,wall[0].getPosition().y+wall[0].getSize().y);
+}
+
+sf::Vector2f background::getBoxSize() {
+    sf::Vector2f(wall[0].getSize().x,wall[0].getSize().x);
 }

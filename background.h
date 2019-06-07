@@ -12,13 +12,17 @@ class background {
 public:
     sf::RectangleShape death;
     sf::RectangleShape wall[4];
-    background();
     background(sf::RenderWindow & ark);
     void draw(sf::RenderWindow & ark);
     sf::Vector2f getPosForPlatform();
     sf::Vector2f getPosForBall();
     sf::Vector2f getPosForLevelDraw();
     sf::Vector2f getLevelSize();
+    sf::Vector2f getPosforGameState();
+    sf::Vector2f getBoxPostition();
+    sf::Vector2f getBoxSize();
+
+
 
 };
 
