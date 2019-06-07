@@ -1,0 +1,3 @@
+C:/Users/Daniel/Desktop/Cpp/Arkanoid/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Daniel/Desktop/Cpp/Arkanoid/cmake-build-debug/CMakeFiles/Arkanoid.dir
+C:/Users/Daniel/Desktop/Cpp/Arkanoid/cmake-build-debug/CMakeFiles/rebuild_cache.dir
