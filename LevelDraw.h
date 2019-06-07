@@ -28,6 +28,7 @@ private:
     LS levelsize;
 public:
     std::vector<std::vector<int> > pole;
+    int poleOriginalState[10][12];
     obj block;
     LevelDraw(background &tlo);
     void drawblock(sf::RenderWindow &ark);
@@ -35,6 +36,7 @@ public:
     int getLevelSizeRows();
     int getBlockHitValue(int x, int y);
     int getTotalBlockHitValue();
+    void SaveBoardState();
 };
 
 

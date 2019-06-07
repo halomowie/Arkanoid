@@ -19,8 +19,7 @@ public:
     sf::Vector2f getPosForLevelDraw();
     sf::Vector2f getLevelSize();
     sf::Vector2f getPosforGameState();
-    sf::Vector2f getBoxPostition();
-    sf::Vector2f getBoxSize();
+
 
 
 

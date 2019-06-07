@@ -21,7 +21,7 @@ background::background(sf::RenderWindow &temp): ark(temp)  {
             wall[0].getPosition().y+wall[0].getSize().y+wall[0].getSize().x));
     wall[3].setPosition(wall[0].getPosition().x,wall[0].getPosition().y + wall[0].getSize().y);
     death.setPosition(wall[0].getPosition().x,wall [0].getPosition().y+ wall[0].getSize().x-wall[0].getSize().y*1);
-    death.setFillColor(sf::Color(0, 0, 0));
+    death.setFillColor(sf::Color(50, 0, 0));
     death.setSize(sf::Vector2f(wall[0].getSize().x,wall[0].getSize().y*2));
 
 
@@ -57,10 +57,3 @@ void background::draw(sf::RenderWindow &ark) {
     ark.draw(death);
 }
 
-sf::Vector2f background::getBoxPostition() {
-    sf::Vector2f(wall[0].getPosition().x,wall[0].getPosition().y+wall[0].getSize().y);
-}
-
-sf::Vector2f background::getBoxSize() {
-    sf::Vector2f(wall[0].getSize().x,wall[0].getSize().x);
-}

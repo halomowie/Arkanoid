@@ -30,7 +30,8 @@ class ball {
     paddle &palka;
     LevelDraw &lvl;
     sf::Clock DebounceClock;
-    int Debounce;
+    int DebounceBlockHit;
+    int DebouncePaddle;
 public:
     kula pin;
     ball(sf::RenderWindow &ark, background &tlo, paddle &palka, LevelDraw &lvl);

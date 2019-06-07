@@ -25,15 +25,17 @@ class GameManager {
     paddle &palka;
     LevelDraw &lvl;
     background &tlo;
-    sf::RenderWindow &ark;
+
     sf::Font font;
+    sf::Vector2f BoxPos;
+    sf::Vector2f BoxSize;
+    sf::Clock clickrate;
 
 
 public:
-    GameManager(sf::RenderWindow &ark, ball &kula, paddle &palka, LevelDraw &lvl, background &tlo);
-    void DrawGamemanager(sf::RenderWindow &ark);
-    void EndScreen(sf::RenderWindow &ark);
-
+    GameManager(ball &kula, paddle &palka, LevelDraw &lvl, background &tlo);
+    void DrawGamemanager(sf::RenderWindow &ark, sf::Event &event);
+    void GameRestart(sf::Event &event);
 
 };
 

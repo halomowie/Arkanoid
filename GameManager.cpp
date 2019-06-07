@@ -4,8 +4,8 @@
 
 #include "GameManager.h"
 
-GameManager::GameManager(sf::RenderWindow &arktemp, ball &kulatemp, paddle &palkatemp, LevelDraw &lvltemp, background &tlotemp):
-ark(arktemp), tlo(tlotemp), palka(palkatemp), lvl(lvltemp), kula(kulatemp)  {
+GameManager::GameManager(ball &kulatemp, paddle &palkatemp, LevelDraw &lvltemp, background &tlotemp):
+tlo(tlotemp), palka(palkatemp), lvl(lvltemp), kula(kulatemp)  {
     font.loadFromFile("resources/Pixeled.ttf");
     text.TextLives.setFont(font);
     text.Lives.setFont(font);
@@ -33,17 +33,13 @@ ark(arktemp), tlo(tlotemp), palka(palkatemp), lvl(lvltemp), kula(kulatemp)  {
 
     text.GameEnd.setFont(font);
     text.GameEnd.setFillColor(sf::Color(255,255,255));
-    text.GameEnd.setCharacterSize(80);
-    text.GameEnd.setPosition(600,400);
+    text.GameEnd.setCharacterSize(35);
 
 
 
 }
-void GameManager::EndScreen(sf::RenderWindow &ark) {
 
-}
-
-void GameManager::DrawGamemanager(sf::RenderWindow &ark) {
+void GameManager::DrawGamemanager(sf::RenderWindow &ark, sf::Event &event) {
 
 
     text.Lives.setFillColor(sf::Color(216, 28, 28));
@@ -62,11 +58,71 @@ void GameManager::DrawGamemanager(sf::RenderWindow &ark) {
     ark.draw(text.Blockhits);
     ark.draw(text.GameEnd);
 
-    if(kula.getBallHealh()==0){
-        text.GameEnd.setString("LOSE");
+    //LOSE STATEMENT
+    if (kula.pin.healh <= 0) {
+        text.GameEnd.setString("LOSE! CLICK DOWN TO RESTART");
+        text.GameEnd.setPosition(
+                tlo.wall[0].getPosition().x + tlo.wall[0].getSize().x / 2 - text.GameEnd.getGlobalBounds().width / 2,
+                tlo.wall[0].getPosition().y + tlo.wall[0].getSize().y + tlo.wall[0].getSize().x / 2 -
+                text.GameEnd.getGlobalBounds().height / 2);
+
+        kula.pin.velocity.x=0;
+        kula.pin.velocity.y=0;
+        kula.pin.blok.setPosition(tlo.getPosForBall());
+
+        GameRestart(event);
     }
-    else if(lvl.getTotalBlockHitValue()==0){
-        text.GameEnd.setString("WIN");
+    else if (lvl.getTotalBlockHitValue() == 0) {
+        text.GameEnd.setString("WIN! CLICK DOWN TO RESTART");
+        text.GameEnd.setPosition(
+                tlo.wall[0].getPosition().x + tlo.wall[0].getSize().x / 2 -
+                text.GameEnd.getGlobalBounds().width / 2,
+                tlo.wall[0].getPosition().y + tlo.wall[0].getSize().y + tlo.wall[0].getSize().x / 2 -
+                text.GameEnd.getGlobalBounds().height / 2);
+
+        kula.pin.velocity.x=0;
+        kula.pin.velocity.y=0;
+        kula.pin.blok.setPosition(tlo.getPosForBall());
+
+
+        GameRestart(event);
+
+    }
+    else if (kula.pin.healh >0){
+        text.GameEnd.setString(" ");
+    }
+
+    }
+
+
+
+
+void GameManager::GameRestart(sf::Event &event) {
+    if (event.type == sf::Event::KeyPressed) {
+        if (event.key.code == sf::Keyboard::Down) {
+            std::cout << "TEST" << std::endl;
+
+            for (int x = 0; x < lvl.getLevelSizeCols(); ++x) {
+                for (int y = 0; y < lvl.getLevelSizeRows(); ++y) {
+                    lvl.pole[x][y] = lvl.poleOriginalState[x][y];
+                }
+
+            }
+
+            kula.pin.velocity.x=kula.pin.pace;
+            kula.pin.velocity.y=kula.pin.pace;
+            kula.pin.healh = 3;
+            kula.pin.blok.setPosition(tlo.getPosForBall());
+            palka.platform.blok.setPosition(tlo.getPosForPlatform());
+            if (kula.pin.velocity.y > 0) {
+
+            } else if (kula.pin.velocity.y < 0) {
+                kula.pin.velocity.y *= -1;
+            }
+
+
+        }
     }
 }
+
 

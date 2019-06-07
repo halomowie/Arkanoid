@@ -16,7 +16,7 @@ int main()
     paddle palka(tlo);
     LevelDraw lvl(tlo);
     ball kula(ark,tlo,palka,lvl);
-    GameManager mgr(ark,kula,palka,lvl,tlo);
+    GameManager mgr(kula,palka,lvl,tlo);
 
     // run the program as long as the window is open
     while (ark.isOpen())
@@ -38,15 +38,16 @@ int main()
         ark.clear(sf::Color(0,0,0));
 
         // draw everything here...
-
         tlo.draw(ark);
-        mgr.DrawGamemanager(ark);
-        if(kula.getBallHealh()>0) {
-            kula.move(ark, lvl);
-            palka.drawpaddle(ark);
-            palka.movepaddle(event, ark);
-            lvl.drawblock(ark);
-        }
+        kula.move(ark, lvl);
+        palka.drawpaddle(ark);
+        palka.movepaddle(event, ark);
+        lvl.drawblock(ark);
+        mgr.DrawGamemanager(ark,event);
+
+
+
+
 
         // end the current frame
         ark.display();

@@ -11,9 +11,10 @@ tlo(temp1), palka(temp2), lvl(temp3) {
     pin.healh=3;
     pin.pace=3;
     pin.tickrate=0;
-    Debounce=20;
-    pin.velocity.x=1*pin.pace;
-    pin.velocity.y=1*pin.pace;
+    DebounceBlockHit=20;
+    DebouncePaddle=40;
+    pin.velocity.x=pin.pace;
+    pin.velocity.y=pin.pace;
     pin.radious=10;
     pin.blok.setRadius(pin.radious);
     pin.blok.setOrigin(sf::Vector2f(pin.radious,pin.radious));
@@ -52,11 +53,6 @@ void ball::move(sf::RenderWindow &ark, LevelDraw &lvl) {
                 pin.blok.setPosition(tlo.getPosForBall());
                 pin.velocity.y*=-1;
             }
-            else if(pin.healh<=0){
-                pin.velocity.x=0;
-                pin.velocity.y=0;
-                pin.blok.setPosition(sf::Vector2f(-100,-100));
-            }
 
         }
         ark.draw(pin.blok);
@@ -71,7 +67,7 @@ void ball::BlockHit() {
     for (int x = 0; x < lvl.getLevelSizeCols(); ++x) {
         for (int y = 0; y < lvl.getLevelSizeRows(); ++y) {
             //Gora i Doł bloku
-            if(DebounceClock.getElapsedTime().asMilliseconds()>Debounce) {
+            if(DebounceClock.getElapsedTime().asMilliseconds()>DebounceBlockHit) {
                 if (pin.blok.getPosition().x >= lvl.block.blok[x][y].getPosition().x
                     and
                     pin.blok.getPosition().x <= lvl.block.blok[x][y].getPosition().x + lvl.block.blok[x][y].getSize().x
@@ -101,7 +97,7 @@ void ball::BlockHit() {
 }
 
 void ball::CollisionWithPaddle() {
-    if(DebounceClock.getElapsedTime().asMilliseconds()>Debounce) {
+    if(DebounceClock.getElapsedTime().asMilliseconds()>DebouncePaddle) {
         //Gora i Dol
         if (pin.blok.getPosition().x >= palka.platform.blok.getPosition().x - palka.platform.blok.getSize().x / 2
             and pin.blok.getPosition().x <= palka.platform.blok.getPosition().x + palka.platform.blok.getSize().x / 2
@@ -122,6 +118,7 @@ void ball::CollisionWithPaddle() {
             pin.velocity.x *= -1;
             DebounceClock.restart();
         }
+
     }
 }
 
