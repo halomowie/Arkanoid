@@ -6,8 +6,10 @@
 #include "LevelDraw.h"
 #include <iostream>
 #include "GameManager.h"
+#include <ctime>
 int main()
 {
+    srand( time( NULL ) );
     // create the window
     sf::RenderWindow ark(sf::VideoMode(1100, 700, 32), "Arkanoid");
     //ark.setVerticalSyncEnabled(true);
@@ -23,6 +25,7 @@ int main()
     {
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
+
         while (ark.pollEvent(event))
         {
             // "close requested" event: we close the window
@@ -41,10 +44,15 @@ int main()
         tlo.draw(ark);
         kula.move(ark, lvl);
         palka.drawpaddle(ark);
-        palka.movepaddle(event, ark);
         lvl.drawblock(ark);
-        mgr.DrawGamemanager(ark,event);
-
+        mgr.DrawGamemanager(ark);
+        mgr.EventsGamemanager(event);
+        palka.movepaddle(event);
+        if (event.type == sf::Event::TextEntered)
+        {
+            if (event.text.unicode<150)
+                std::cout << "ASCII character typed: " << static_cast<char>(event.text.unicode) << " " << event.text.unicode << std::endl;
+        }
 
 
 

@@ -17,9 +17,9 @@ paddle::paddle(background &temp2): tlo(temp2) {
 
 }
 
-void paddle::movepaddle(sf::Event &event, sf::RenderWindow &ark) {
-    if (platform.tick.getElapsedTime().asMilliseconds() >= platform.tickrate) {
-        platform.tick.restart();
+void paddle::movepaddle(sf::Event &event) {
+//    if (platform.tick.getElapsedTime().asMilliseconds() >= platform.tickrate) {
+//        platform.tick.restart();
         if (event.type == sf::Event::KeyPressed) {
             if (event.key.code == sf::Keyboard::Left) {
                 if(platform.blok.getGlobalBounds().intersects(tlo.wall[3].getGlobalBounds())){
@@ -49,7 +49,7 @@ void paddle::movepaddle(sf::Event &event, sf::RenderWindow &ark) {
             }
         }
     }
-}
+
 
 
 

@@ -34,7 +34,8 @@ class GameManager {
 
 public:
     GameManager(ball &kula, paddle &palka, LevelDraw &lvl, background &tlo);
-    void DrawGamemanager(sf::RenderWindow &ark, sf::Event &event);
+    void EventsGamemanager(sf::Event &event);
+    void DrawGamemanager(sf::RenderWindow &ark);
     void GameRestart(sf::Event &event);
 
 };

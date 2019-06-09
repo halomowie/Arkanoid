@@ -9,7 +9,7 @@
 background::background(sf::RenderWindow &temp): ark(temp)  {
 
     for (int i = 0; i < 4; ++i) {
-        wall[i].setSize(sf::Vector2f(600,10));
+        wall[i].setSize(sf::Vector2f(600,20));
         wall[i].setFillColor(sf::Color(255,255,255));
     }
     wall[1].rotate(90);
@@ -29,7 +29,7 @@ background::background(sf::RenderWindow &temp): ark(temp)  {
 
 sf::Vector2f background::getPosForPlatform() {
     return sf::Vector2f(wall[0].getPosition().x+wall[0].getSize().x/2,
-            wall[0].getPosition().y+wall[0].getSize().x-wall[0].getSize().y*4);
+            wall[0].getPosition().y+wall[0].getSize().x-wall[0].getSize().y*2);
 }
 
 sf::Vector2f background::getPosForBall() {

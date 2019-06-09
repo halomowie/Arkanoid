@@ -6,26 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Daniel/Desktop/Cpp/Arkanoid/GameManager.cpp
-GameManager.h
-C:/Users/Daniel/Desktop/Cpp/Arkanoid/GameManager.h
-
-C:/Users/Daniel/Desktop/Cpp/Arkanoid/GameManager.h
-ball.h
-C:/Users/Daniel/Desktop/Cpp/Arkanoid/ball.h
-LevelDraw.h
-C:/Users/Daniel/Desktop/Cpp/Arkanoid/LevelDraw.h
-paddle.h
-C:/Users/Daniel/Desktop/Cpp/Arkanoid/paddle.h
-background.h
-C:/Users/Daniel/Desktop/Cpp/Arkanoid/background.h
-SFML/Graphics.hpp
--
-iostream
--
-string
--
-
 C:/Users/Daniel/Desktop/Cpp/Arkanoid/LevelDraw.h
 Graphics/RenderWindow.hpp
 -
@@ -51,6 +31,8 @@ paddle.h
 C:/Users/Daniel/Desktop/Cpp/Arkanoid/paddle.h
 LevelDraw.h
 C:/Users/Daniel/Desktop/Cpp/Arkanoid/LevelDraw.h
+cmath
+-
 
 C:/Users/Daniel/Desktop/Cpp/Arkanoid/paddle.h
 background.h

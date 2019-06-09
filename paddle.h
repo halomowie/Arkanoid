@@ -22,7 +22,7 @@ class paddle {
 public:
     padd platform;
     paddle(background &tlo);
-    void movepaddle(sf::Event &event, sf::RenderWindow &ark);
+    void movepaddle(sf::Event &event);
     void drawpaddle(sf::RenderWindow &temp);
 };
 
