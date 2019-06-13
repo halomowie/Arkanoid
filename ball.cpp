@@ -17,7 +17,7 @@ tlo(temp1), palka(temp2), lvl(temp3) {
     pin.tickrate=0;
     DebounceBlockHit=20;
     DebouncePaddle=40;
-    DebounceWall=0;
+    DebounceWall=40;
     pin.velocity.x=zwrot.x*pin.pace.x;
     pin.velocity.y=zwrot.y*pin.pace.y;
     pin.radious=10;
@@ -123,21 +123,25 @@ void ball::CollisionWithWalls() {
         if (pin.blok.getGlobalBounds().intersects(tlo.wall[0].getGlobalBounds())) {
             BallAngle();
             zwrot.y *= -1;
+            DebounceClockWALL.restart();
         }
             //DOLNA SCIANA
         else if (pin.blok.getGlobalBounds().intersects(tlo.wall[2].getGlobalBounds())) {
             BallAngle();
             zwrot.y *= -1;
+            DebounceClockWALL.restart();
         }
             //LEWA SCIANA
         else if (pin.blok.getGlobalBounds().intersects(tlo.wall[3].getGlobalBounds())) {
             BallAngle();
             zwrot.x *= -1;
+            DebounceClockWALL.restart();
         }
             //PRAWA SCIANA
         else if (pin.blok.getGlobalBounds().intersects(tlo.wall[1].getGlobalBounds())) {
             BallAngle();
             zwrot.x *= -1;
+            DebounceClockWALL.restart();
         }
             //WYPADA POZA PLATFORME
         else if (pin.blok.getGlobalBounds().intersects(tlo.death.getGlobalBounds())) {
@@ -148,7 +152,6 @@ void ball::CollisionWithWalls() {
             }
 
         }
-        DebounceClockWALL.restart();
     }
 }
 
