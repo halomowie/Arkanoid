@@ -34,7 +34,6 @@ public:
     void drawblock(sf::RenderWindow &ark);
     int getLevelSizeCols();
     int getLevelSizeRows();
-    int getBlockHitValue(int x, int y);
     int getTotalBlockHitValue();
     void SaveBoardState();
 };

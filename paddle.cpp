@@ -6,9 +6,9 @@
 #include "background.h"
 #include <iostream>
 paddle::paddle(background &temp2): tlo(temp2) {
-    platform.speedPercent = 6;
+    platform.speedPercent = 5;
     platform.heightPercent = 10;
-    platform.widthPercent = 120;
+    platform.widthPercent = 90;
     platform.tickrate = 0;
     platform.blok.setSize(sf::Vector2f(platform.widthPercent,platform.heightPercent));
     platform.blok.setOrigin(sf::Vector2f(platform.blok.getSize().x/2,0));

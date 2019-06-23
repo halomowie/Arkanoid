@@ -12,7 +12,6 @@ int main()
     srand( time( NULL ) );
     // create the window
     sf::RenderWindow ark(sf::VideoMode(1100, 700, 32), "Arkanoid");
-    //ark.setVerticalSyncEnabled(true);
     ark.setFramerateLimit(60);
     background tlo(ark);
     paddle palka(tlo);
@@ -48,11 +47,13 @@ int main()
         mgr.DrawGamemanager(ark);
         mgr.EventsGamemanager(event);
         palka.movepaddle(event);
-        if (event.type == sf::Event::TextEntered)
-        {
-            if (event.text.unicode<150)
-                std::cout << "ASCII character typed: " << static_cast<char>(event.text.unicode) << " " << event.text.unicode << std::endl;
-        }
+
+
+//        if (event.type == sf::Event::TextEntered)
+//        {
+//            if (event.text.unicode<150)
+//                std::cout << "ASCII character typed: " << static_cast<char>(event.text.unicode) << " " << event.text.unicode << std::endl;
+//        }
 
 
 
